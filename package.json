@@ -1,0 +1,30 @@
+{
+  "name": "usflag",
+  "version": "0.0.0",
+  "description": "Render the US Flag in SVG using RaphaelJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimeMagazine/usflag.git"
+  },
+  "keywords": [
+    "flag",
+    "usflag"
+  ],
+  "author": "Chris Wilson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimeMagazine/usflag/issues"
+  },
+  "homepage": "https://github.com/TimeMagazine/usflag#readme",
+  "dependencies": {
+    "elastic-svg": "0.0.4",
+    "raphael": "^2.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1"
+  }
+}
