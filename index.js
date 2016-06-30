@@ -22,7 +22,7 @@
 	    return this.path(path).attr("fill", "white").attr("stroke-width", 0);
 	}
 
-	var makeFlag = function(container_id) {
+	var makeFlag = function(container_id, zoom) {
 		var width = document.getElementById(container_id).offsetWidth;
 
 		var FLY = width,
@@ -33,6 +33,9 @@
 			WHITE = "#FFFFFF";
 
 		var paper = Raphael(container_id, FLY, HOIST);
+		zoom = zoom || 1;
+
+		paper.setViewBox(0, 0, paper.width / zoom, paper.height / zoom);
 
 		//stripes
 		for (var i = 0; i < 13; i += 1) {
@@ -75,8 +78,13 @@
 
 		// method for animating `N` stars at one per `interval` ms, fading in over fade_in ms
 		return {
-			animate: function(N, interval, fade_in) {
+			animate: function(N, interval, fade_in) {				
 				stars.attr("opacity", 0);
+				var label = paper.text(5, STRIPE * 7.5, "SCORE: 0 / 50")
+					.attr("font-size", 20)
+					.attr("font-family", "serif")
+					.attr("text-anchor", "start");
+
 				var animation = Raphael.animation({
 					opacity: 1
 				}, fade_in);
@@ -85,6 +93,7 @@
 					if (s < N) {
 						setTimeout(function() {
 							star.animate(animation);
+							label.attr("text", "SCORE: " + (s + 1) + " / 50");
 						}, s * interval);
 					}
 				});
